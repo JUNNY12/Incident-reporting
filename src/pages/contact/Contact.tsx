@@ -1,7 +1,7 @@
-import {IoLocationOutline} from 'react-icons/io5'
-import {AiOutlinePhone} from 'react-icons/ai'
-import {FaFax} from 'react-icons/fa'
-import {RiMailSendLine} from 'react-icons/ri'
+import { IoLocationOutline } from 'react-icons/io5'
+import { AiOutlinePhone } from 'react-icons/ai'
+import { FaFax } from 'react-icons/fa'
+import { RiMailSendLine } from 'react-icons/ri'
 import { SharedLayout, Container, Flex, H2 } from '../../component'
 
 
@@ -10,7 +10,7 @@ const Contact = () => {
     <SharedLayout>
 
       <Container
-      className='pt-16'
+        className='pt-16'
       >
         <div className='relative'>
           <Flex className='items-center justify-center gap-10 '>
@@ -52,15 +52,15 @@ const Contact = () => {
               <div>Email</div>
               <div>
                 <a href='mailto:reportingapp.info' >reportingapp.info</a>
-             </div>
+              </div>
             </div>
           </Flex>
 
           <Flex className='items-center justify-center'>
             <div className='w-96 h-96 bg-pastel-green-200 -mt-10'>
               <H2
-              title='Contact Us'
-              className='text-pastel-green-800 text-center mt-10'
+                title='Contact Us'
+                className='text-pastel-green-800 text-center mt-10'
               />
               <form action="">
 

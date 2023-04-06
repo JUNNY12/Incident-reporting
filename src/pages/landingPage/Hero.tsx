@@ -18,7 +18,6 @@ const Hero = () => {
                         className='text-mercury-white-50
                         tabletS:text-4xl
                         tabletS:leading-tight 
-                        tabletS:text-center
                         mobileM:text-3xl
                         mobileM:leading-tight
                         font-bold
@@ -42,13 +41,14 @@ const Hero = () => {
                         </Button>
                     </div>
 
-                    <div className='flex items-center mt-10 gap-12 text-3xl
+                    <div className='flex items-center mt-10 text-3xl
                      text-mercury-white-50 font-bold
-                     tabletS:text-xl
+                     tabletS:text-2xl
+                     mobileM:text-3xl
                      '
 
                     >
-                        <div className='font-bold'>
+                        <div className='font-bold mr-12'>
                             <div>20 +</div>
                             <div>Users</div>
                         </div>

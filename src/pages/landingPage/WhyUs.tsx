@@ -44,7 +44,7 @@ const WhyUs = () => {
 
             <div className='mt-6'>
                 <Grid 
-                className='place-items-center gap-24 grid-cols-2
+                className='place-items-center gap-x-24 grid-cols-2
                 tabletM:grid-cols-1
                 '
                 
@@ -57,8 +57,10 @@ const WhyUs = () => {
                                 className='w-96 h-60 relative bg-mercury-white-50
                                 text-pastel-green-900
                                 mobileL:w-72
+                                mb-16
                                 hover:bg-pastel-green-500
                                 hover:text-mercury-white-900
+
                                 transition-all duration-300 ease-in-out
 
                                 '
