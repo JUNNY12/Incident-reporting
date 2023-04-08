@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router-dom";
-import { LazyLandingPage, LazyContact, LazyIncident, LazyReport } from "../pages";
+import { LazyLandingPage, LazyContact,LazyInc, LazyIncident, LazyReport } from "../pages";
 
 export function Routes(){
     return useRoutes([
@@ -15,6 +15,10 @@ export function Routes(){
         {
             path: "incident",
             element: <LazyIncident />
+        },
+        {
+            path: "inc/:id",
+            element: <LazyInc/>
         },
         {
             path: "report",

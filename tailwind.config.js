@@ -41,6 +41,8 @@ module.exports = {
       'tabletL': { 'max': '1024px' },
       'tabletM': { 'max': '920px' },
       'tabletS': { 'max': '768px' },
+      'tabletXS': { 'max': '640px' },
+      'mobileXL': { 'max': '540px' },
       'mobileL': { 'max': '425px' },
       'mobileM': { 'max': '375px' },
       'mobileS': { 'max': '320px' },      

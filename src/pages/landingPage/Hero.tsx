@@ -32,8 +32,9 @@ const Hero = () => {
                     <div className='mt-8'>
                         <Button
                             arial-label='Sign in with Google'
-                            className='bg-mercury-white-50 text-pastel-green-900 font-bold w-72
+                            className='bg-mercury-white-50 text-pastel-green-800 font-bold w-72
                             mobileM:w-60
+                            hover:text-pastel-green-900 
                             '
                         >
                             <img src={googleIcon} alt='google' className='mr-4 h-4 w-4' />

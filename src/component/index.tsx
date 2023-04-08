@@ -8,6 +8,8 @@ import { H1, H2, H3 } from "./Headings";
 import Card from "./Card";
 import Footer from "./Footer";
 import { Flex } from "./Container";
+import {Input , TextField} from "./Input";
+import SideBar from "./SideBar";
 
 export { 
         Loader,
@@ -21,5 +23,8 @@ export {
         H3,
         Card,
         Footer,
-        Flex
+        Flex,
+        Input,
+        TextField,
+        SideBar
     };
