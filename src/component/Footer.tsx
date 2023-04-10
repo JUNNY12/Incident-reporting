@@ -7,32 +7,32 @@ const Footer = () => {
     const date = new Date()
     const year = date.getFullYear()
   return (
-    <footer className='bg-pastel-green-200 p-12
+    <footer className='bg-mercury-white-100 p-12
     mobileL:ps-8 mobileL:pe-8 
     '>
         <div className='flex items-center justify-center'>
-            <div className=' hover:text-mercury-white-400 transition ease-in-out duration-300 mr-6 text-5xl text-pastel-green-800 cursor-pointer'>
+            <div className=' hover:text-pastel-green-600 transition ease-in-out duration-300 mr-6 text-5xl text-black-950 cursor-pointer'>
                 <AiFillFacebook />
             </div>
 
-            <div className=' hover:text-mercury-white-400 transition ease-in-out duration-300 mr-6 text-5xl text-pastel-green-800 cursor-pointer'>
+            <div className=' hover:text-pastel-green-600 transition ease-in-out duration-300 mr-6 text-5xl text-black-950 cursor-pointer'>
                 <AiFillInstagram />
             </div>
 
-            <div className=' hover:text-mercury-white-400 transition ease-in-out duration-300 mr-6 text-5xl text-pastel-green-800 cursor-pointer'>
+            <div className=' hover:text-pastel-green-600 transition ease-in-out duration-300 mr-6 text-5xl text-black-950 cursor-pointer'>
                 <AiFillTwitterCircle />
             </div>
-            <div className=' hover:text-mercury-white-600 transition ease-in-out duration-300 mr-6 text-5xl text-pastel-green-800 cursor-pointer '>
+            <div className=' hover:text-pastel-green-600 transition ease-in-out duration-300 mr-6 text-5xl text-black-950 cursor-pointer '>
                 <AiFillLinkedin />
             </div>
         </div>
 
         <div className='mt-8'>
-            <ul className='flex items-center justify-center text-pastel-green-800 text-2xl
+            <ul className='flex items-center justify-center text-black-950 text-2xl
             mobileL:flex-col 
             '>
-                <li className='mr-6 border-r-2 border-r-pastel-green-800 pr-4 
-                 hover:text-mercury-white-400 transition ease-in-out duration-300
+                <li className='mr-6 border-r-2 border-r-black-950 pr-4 
+                 hover:text-pastel-green-600 transition ease-in-out duration-300
                  mobileL:border-r-0
                  mobileL:mr-0
                  mobileL:pr-0
@@ -41,8 +41,8 @@ const Footer = () => {
                     <Link to={`/contact`}>Contact</Link>
                 </li>
 
-                <li className='mr-6 border-r-2 border-r-pastel-green-800 pr-4 
-                 hover:text-mercury-white-400 transition ease-in-out duration-300
+                <li className='mr-6 border-r-2 border-r-black-950 pr-4 
+                 hover:text-pastel-green-600 transition ease-in-out duration-300
                  mobileL:border-r-0
                  mobileL:mr-0
                  mobileL:pr-0
@@ -51,7 +51,7 @@ const Footer = () => {
                     <Link to={`/incident`}>Incident</Link>
                 </li>
 
-                <li className='mr-6 hover:text-mercury-white-400 
+                <li className='mr-6 hover:text-pastel-green-600 
                 transition ease-in-out duration-300
                 mobileL:mr-0
                 '>
@@ -61,7 +61,8 @@ const Footer = () => {
         </div>
 
         <div className='flex justify-center items-center mt-8 text-2xl
-         text-pastel-green-800
+         text-black-950
+         font-bold
          mobileL:text-lg
          mobileL:font-bold
    

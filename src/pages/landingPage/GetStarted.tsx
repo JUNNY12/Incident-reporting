@@ -8,8 +8,8 @@ const GetStarted = () => {
         <div className='mt-8'>
             <div className='flex items-center justify-center'>
                 <H2 title='Get Started'
-                    className='text-mercury-white-50 inline-block mb-8
-            text-center mt-10 border-b-2 border-pastel-green-200 pb-2
+                    className='text-black-950 inline-block mb-8
+            text-center mt-10 border-b-2 border-pastel-green-800 pb-2
             mobileL:text-3xl
             '
                 />
@@ -23,7 +23,7 @@ const GetStarted = () => {
             '
             >
                 <div className='order-last'>
-                    <p className='text-xl text-mercury-white-50 
+                    <p className='text-xl text-black-950 
                     leading-normal
                     tabletM:leading-relaxed
                     '>
@@ -36,9 +36,9 @@ const GetStarted = () => {
                     <div className='mt-8'>
                         <Button
                             arial-label='get started'
-                            className='bg-mercury-white-50 text-pastel-green-900 font-bold w-72
+                            className='text-mercury-white-50 bg-pastel-green-900 font-bold w-72
                             mobileM:w-60
-                            hover:text-pastel-green-900 
+                            hover:bg-pastel-green-600 
                             '
                         >
                             <img src={googleIcon} alt='google' className='mr-4 h-4 w-4' />

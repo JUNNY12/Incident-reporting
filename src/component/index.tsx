@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import { Flex } from "./Container";
 import {Input , TextField} from "./Input";
 import SideBar from "./SideBar";
+import { ScrollToTop } from "./ScrollToTop";
 
 export { 
         Loader,
@@ -26,5 +27,6 @@ export {
         Flex,
         Input,
         TextField,
-        SideBar
+        SideBar,
+        ScrollToTop
     };

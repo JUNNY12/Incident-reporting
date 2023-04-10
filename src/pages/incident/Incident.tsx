@@ -8,7 +8,7 @@ import Filter from './Filter'
 const Incident = () => {
   return (
    <SharedLayout>
-      <Container className='pt-24 '>
+      <Container className='pt-24 bg-mercury-white-50 '>
         <Filter />
         <Recent />
         <AllIncident />

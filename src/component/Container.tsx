@@ -5,7 +5,7 @@ interface ContainerProps {
 
 export const Container = ({ children, className }:ContainerProps) => {
   return (
-    <section className={`p-12 pt-40 bg-pastel-green-800  
+    <section className={`p-12 pt-40   
     tabletM:pt-24
     mobileL:ps-8 mobileL:pe-8 
    

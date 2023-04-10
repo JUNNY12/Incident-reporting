@@ -15,7 +15,8 @@ const Hero = () => {
             >
                 <div>
                     <H1 title='Report incidents seamlessly with our cutting-edge web app'
-                        className='text-mercury-white-50
+                        className='
+                        text-black-950
                         tabletS:text-4xl
                         tabletS:leading-tight 
                         mobileM:text-3xl
@@ -23,7 +24,7 @@ const Hero = () => {
                         font-bold
                          '
                     />
-                    <p className='text-xl text-mercury-white-50'>
+                    <p className='text-xl text-black-950'>
                         Effortlessly report incidents with
                         our simple one-click reporting feature.
                         Sign in to your Google Account and begin reporting incidents now.
@@ -32,9 +33,9 @@ const Hero = () => {
                     <div className='mt-8'>
                         <Button
                             arial-label='Sign in with Google'
-                            className='bg-mercury-white-50 text-pastel-green-800 font-bold w-72
+                            className='bg-pastel-green-800 text-mercury-white-50 font-bold w-72
                             mobileM:w-60
-                            hover:text-pastel-green-900 
+                            hover:bg-pastel-green-600 
                             '
                         >
                             <img src={googleIcon} alt='google' className='mr-4 h-4 w-4' />
@@ -43,9 +44,10 @@ const Hero = () => {
                     </div>
 
                     <div className='flex items-center mt-10 text-3xl
-                     text-mercury-white-50 font-bold
+                     font-bold
                      tabletS:text-2xl
                      mobileM:text-3xl
+                     text-black-950
                      '
 
                     >

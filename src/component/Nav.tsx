@@ -32,23 +32,23 @@ const Nav = () => {
         <>
             {/* This is the side bar */}
             {showSideBar && (
-                <div className="fixed z-50 top-0 bottom-0 left-0 right-0 transition-all ease-in-out duration-1000">
+                <div className="fixed z-50 top-0 bottom-0 left-0 right-0 transition-all ease-in-out duration-1000 ">
                     <SideBar setShowSideBar={setShowSideBar} />
                 </div>
             )}
 
             {/* This is the nav bar */}
             <nav className={!isScrolled ?
-                'h-16 flex items-center justify-between z-20 text-mercury-white-50 pt-4 pb-4 ps-12 pe-12 bg-pastel-green-800 fixed w-full mobileL:ps-8 mobileL:pe-8'
+                'h-16 flex items-center justify-between z-20  pt-4 pb-4 ps-12 pe-12 text-black-950 bg-mercury-white-50 fixed w-full mobileL:ps-8 mobileL:pe-8'
                 :
-                (' transition ease-in-out duration-1000 h-16 flex items-center justify-between z-20 bg-pastel-green-200 pt-4 pb-4 ps-12 pe-12 text-pastel-green-800 fixed w-full mobileL:ps-8 mobileL:pe-8 ')
+                (' transition ease-in-out duration-1000 h-16 flex items-center justify-between z-20 bg-mercury-white-100 pt-4 pb-4 ps-12 pe-12 text-pastel-green-800 fixed w-full mobileL:ps-8 mobileL:pe-8 shadow-lg ')
             }
             >
 
                 <div>
                     <Link to='/'>
-                        <div className={!isScrolled ? 'border-4 border-pastel-green-100 rounded-full h-12 w-12 flex items-center justify-center text-2xl font-bold text-pastel-green-10 '
-                            : 'border-4 border-pastel-green-800 rounded-full h-12 w-12 flex items-center justify-center text-2xl font-bold text-pastel-green-800 '
+                        <div className={!isScrolled ? 'border-4 border-pastel-green-800 rounded-full h-12 w-12 flex items-center justify-center text-2xl font-bold text-pastel-green-10 '
+                            : 'border-4 border-pastel-green-800 rounded-full h-12 w-12 flex items-center justify-center text-2xl font-bold'
                         }>
                             RL
                         </div>
@@ -67,7 +67,9 @@ const Nav = () => {
                     <li className='mr-10 font-bold text-xl'>
                         <Link to='/contact'>
                             <Button
-                                className='bg-mercury-white-50 text-pastel-green-800 w-40 text-2xl'
+                                className=' bg-pastel-green-800 text-mercury-white-50 w-40 text-2xl pb-3
+                                hover:bg-pastel-green-600 rounded-[40px]
+                                '
                             >
                                 Contact
                             </Button>
@@ -78,7 +80,7 @@ const Nav = () => {
                 {
                     !showSideBar && (
                         <div className='absolute top-[0.6rem] right-6 hidden tabletS:block'>
-                            <Button className='hover:text-pastel-green-800'>
+                            <Button className='hover:text-mercury-white-50 hover:bg-pastel-green-600'>
                                 <AiOutlineMenu className='text-3xl' onClick={() => setShowSideBar(true)} />
                             </Button>
                         </div>)

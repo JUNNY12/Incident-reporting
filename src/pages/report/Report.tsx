@@ -3,10 +3,13 @@ import { Button, SharedLayout } from '../../component'
 import IncidentReport from './IncidentReport'
 import Form from './Form'
 import { useState } from 'react'
-
+import {AiFillPlusCircle} from 'react-icons/ai'
+import { useWidth } from '../../hooks/useWidth'
 const Report = () => {
 
   const [showForm, setShowForm] = useState(false)
+  const width = useWidth()
+  
 
   //function to show form
   const handleShowForm = () => {
@@ -15,20 +18,28 @@ const Report = () => {
 
   return (
     <SharedLayout>
-      <section className='bg-pastel-green-200 h-full
-       p-12 pt-24 relative
-       mobileL:ps-8 mobileL:pe-8 
-       '>
+      <section className='bg-mercury-white-50 min-h-screen p-12 pt-32 relative mobileL:ps-8 mobileL:pe-8 '>
 
         {
+          width > 768 &&
           !showForm &&
           <div className='flex justify-end'>
-            <Button className='bg-pastel-green-800 w-60 font-bold
-           text-mercury-white-50 hover:bg-mercury-white-50
-            hover:text-pastel-green-800'
+            <Button className='bg-pastel-green-800 w-52 font-bold
+           text-mercury-white-50 text-2xl pb-3
+            hover:bg-pastel-green-600'
               onClick={handleShowForm}
             >Report</Button>
           </div>
+        }
+
+        {
+          width < 768 && (
+            <div className='text-pastel-green-800 text-6xl fixed right-4 bottom-10 z-10'>
+              <Button
+              onClick={handleShowForm}
+              ><AiFillPlusCircle /></Button>
+            </div>
+          )
         }
 
         {

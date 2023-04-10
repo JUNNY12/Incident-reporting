@@ -32,11 +32,11 @@ const Data = [
 
 const WhyUs = () => {
     return (
-        <div className='relative '>
+        <div className='relative mt-8'>
             <div className='flex items-center justify-center'>
                 <H2 title='Why Us'
-                    className='text-mercury-white-50 inline-block mb-8
-            text-center mt-10 border-b-2 border-pastel-green-200 pb-2
+                    className='text-black-950 inline-block mb-8
+            text-center mt-10 border-b-2 border-pastel-green-800 pb-2
             mobileL:text-3xl
             '
                 />
@@ -54,21 +54,21 @@ const WhyUs = () => {
                             const{ id, title, description, icon } = item
                             return (
                                 <Card
-                                className='w-96 h-60 relative bg-mercury-white-50
-                                text-pastel-green-900
+                                className='w-96 h-60 relative bg-mercury-white-100
+                                text-black-950
                                 mobileL:w-72
                                 mb-16
-                                hover:bg-pastel-green-500
-                                hover:text-mercury-white-900
-
+                                hover:bg-pastel-green-600
+                                hover:text-mercury-white-50
                                 transition-all duration-300 ease-in-out
 
                                 '
                                 key={id}>
-                                    <h2 className='text-center text-2xl mb-6 mt-4'> {title}</h2>
+                                    <h2 className='text-center text-2xl mb-6 mt-6 mobileM:text-xl'> {title}</h2>
                                     <p className='text-lg'>{description}</p>
                                     <div className='text-3xl w-20 h-20 rounded-full
-                                     bg-pastel-green-100
+                                     bg-pastel-green-800
+                                     text-mercury-white-50
                                      flex items-center justify-center
                                      absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2
                                      '>

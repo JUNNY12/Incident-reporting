@@ -8,7 +8,7 @@ const Recent = () => {
         <div className='mb-10'>
             <H1
                 title='Recent Incidents'
-                className='text-pastel-green-100 mobileXL:text-center mobileXL:text-3xl font-bold'
+                className='text-black-950 mobileXL:text-center mobileXL:text-3xl font-bold'
             />
 
             <Grid

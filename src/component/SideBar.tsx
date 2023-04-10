@@ -15,11 +15,11 @@ const SideBar = ({ setShowSideBar }: SideProps) => {
   }
   return (
     <div className='w-72 fixed h-full mobileL:w-60
-    bg-pastel-green-100 text-pastel-green-800
+    bg-mercury-white-100 text-pastel-green-800
     top-0 left-0 z-50
     '>
       <div className='absolute font-bold flex items-center justify-center top-4 right-4'>
-        <Button className=' bg-pastel-green-800 w-8 h-8  text-mercury-white-50 '
+        <Button className=' bg-pastel-green-800 hover:bg-pastel-green-600 w-8 h-8 flex items-end justify-center text-mercury-white-50 '
           onClick={closeSideBar}
         >X</Button>
       </div>
@@ -46,22 +46,32 @@ const SideBar = ({ setShowSideBar }: SideProps) => {
 
           <li className='mb-6'>
             <NavLink to={'/contact'}>
-              <Button className='bg-pastel-green-800 text-mercury-white-50 w-32'>
-                Contact
-              </Button>
+              Contact
             </NavLink>
           </li>
 
           <li className='absolute bottom-8'>
-            <Button className='bg-pastel-green-800 text-mercury-white-50 w-32'>
-              Logout
+            <Button
+              arial-label='get started'
+              className='bg-pastel-green-800 
+              text-mercury-white-50
+              text-xl
+              flex justify-center items-center pb-3
+               hover:bg-pastel-green-600 w-[170px]'
+            >
+              <img src={googleIcon} alt='google' className='mr-4 h-4 w-4' />
+              Log out
             </Button>
           </li>
 
           <li className='absolute bottom-8'>
             <Button
               arial-label='get started'
-              className='bg-mercury-white-50 text-pastel-green-900  w-44 hover:text-pastel-green-900'
+              className='bg-pastel-green-800 
+              text-mercury-white-50
+              text-xl
+              flex justify-center items-center pb-3
+               hover:bg-pastel-green-600 w-[170px]'
             >
               <img src={googleIcon} alt='google' className='mr-4 h-4 w-4' />
               Get Started

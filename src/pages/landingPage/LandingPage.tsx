@@ -9,7 +9,7 @@ const LandingPage = () => {
   return (
     <SharedLayout>
 
-      <Container >
+      <Container className='bg-mercury-white-50' >
         <div>
           <Hero />
         </div>
