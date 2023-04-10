@@ -19,7 +19,7 @@ const SideBar = ({ setShowSideBar }: SideProps) => {
     top-0 left-0 z-50
     '>
       <div className='absolute font-bold flex items-center justify-center top-4 right-4'>
-        <Button className=' bg-pastel-green-800 hover:bg-pastel-green-600 w-8 h-8 flex items-end justify-center text-mercury-white-50 '
+        <Button className=' bg-pastel-green-800 hover:bg-pastel-green-600 w-8 h-8 pb-3 flex items-end justify-center text-mercury-white-50 '
           onClick={closeSideBar}
         >X</Button>
       </div>
