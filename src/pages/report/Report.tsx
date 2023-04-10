@@ -35,9 +35,9 @@ const Report = () => {
         {
           width < 768 && (
             <div className='text-pastel-green-800 text-6xl fixed right-4 bottom-10 z-10'>
-              <Button
+              <button
               onClick={handleShowForm}
-              ><AiFillPlusCircle /></Button>
+              ><AiFillPlusCircle /></button>
             </div>
           )
         }
