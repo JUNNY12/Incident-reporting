@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      myFont: ['"Open Sans"', 'sans-serif'],
+    },
     colors: {
       'pastel-green': {
         '50': '#effef4',

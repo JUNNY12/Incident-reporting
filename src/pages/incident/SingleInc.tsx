@@ -1,12 +1,12 @@
 import React from 'react'
-import { useParams } from 'react-router'
-import { Button, Container, SharedLayout } from '../../component'
-import { IncidentData } from '../../context/dataContext/DataContext'
-import { IncidentProps } from '../../context/dataContext/DataContext'
-import { imgHero } from '../../assets/images'
+import { useParams, useNavigate } from 'react-router'
+import { Button } from '../../component'
+import { IncidentType } from '../../context/userIncidentContext'
+
 import { Map, Marker } from "pigeon-maps"
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import useIncident from '../../hooks/useIncident'
 
 
 
@@ -17,57 +17,41 @@ interface Coordinates {
 
 const SingleInc = () => {
   const { id } = useParams()
+  const { incidents } = useIncident()
 
-  const newData: IncidentProps[] = IncidentData.filter((data) => {
-    return data.id === Number(id)
+  const navigate = useNavigate()
+
+  const newData: IncidentType[] = incidents?.filter((data: IncidentType) => {
+    return data.id === (id)
   })
-  const [coords, setCoords] = useState<Coordinates>({
-    latitude: null,
-    longitude: null,
-  });
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        setCoords({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        });
-      },
-      error => console.log(error),
-      { enableHighAccuracy: true }
-    );
-  }, []);
 
 
-  console.log(coords.latitude)
-  console.log(coords.longitude)
+  const latitude = newData[0]?.latitude ?? 0;
+  const longitude = newData[0]?.longitude ?? 0;
 
-
-  console.log(newData[0]?.title)
   return (
-    <section className='p-12 bg-mercury-white-50 
+    <section className='p-12 bg-mercury-white-50 font-myFont
     mobileL:ps-8 mobileL:pe-8 h-screen
     tabletL:h-full
     ' >
 
-      <div>
-        <Link to='/incident' className='w-40 inline-block'>
-          <Button className='text-mercury-white-100 bg-pastel-green-800 w-40 hover:bg-pastel-green-600  font-bold'>Go Back</Button>
-        </Link>
+
+      <div onClick={() => navigate(-1)} className='w-40 inline-block'>
+        <Button className='text-mercury-white-100 bg-pastel-green-800 w-40 hover:bg-pastel-green-600  font-bold'>Go Back</Button>
       </div>
+
 
       <div className='mt-20 flex items-center justify-center gap-x-10 tabletS:flex-col relative'>
         <div className='w-[500px] h-[500px] tabletS:w-[300px] tabletS:h-[300px] mobileXL:w-[280px] mobileXL:h-[280px]'>
-          <img src={imgHero} alt={newData[0]?.title} className='object-cover w-full h-full ' />
+          <img src={newData[0]?.image} alt={newData[0]?.type} className='object-cover w-full h-full ' />
         </div>
 
-        <div>
-          <h1 className='text-4xl font-bold text-black-950 mb-4 tabletS:absolute tabletS:-top-12'>{newData[0]?.title}</h1>
+        <div className=' w-1/2 tabletS:w-full'>
+          <h1 className='text-4xl font-bold text-black-950 mb-4 tabletS:absolute tabletS:-top-12'>{newData[0]?.type}</h1>
           <p className='text-black-950 mb-4 text-xl'>{newData[0]?.description}</p>
           <div className='mt-4 bg-pastel-green-50 h-[250px] w-full mb-8'>
-            <Map height={250} defaultCenter={[6.5994752, 3.3488896]} defaultZoom={16}>
-              <Marker width={80} height={80} anchor={[6.5994752, 3.3488896]} />
+            <Map height={250} defaultCenter={[latitude, longitude]} defaultZoom={16}>
+              <Marker width={80} height={80} anchor={[latitude, longitude]} />
             </Map>
           </div>
           <p className='text-black-950 text-xl'>Date: {newData[0]?.date}</p>

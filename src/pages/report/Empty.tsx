@@ -2,7 +2,7 @@ import React from 'react'
 
 const Empty = () => {
     return (
-        <div className='flex items-center justify-center mt-20'>
+        <div className='flex items-center justify-center mt-20 font-myFont'>
             <div className='bg-pastel-green-800 text-mercury-white-50 p-4 rounded-sm
              text-2xl text-center
              w-[400px]

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Card, H2 } from '../../../component'
-import { IncidentProps } from '../../../context/dataContext/DataContext'
 import { AiFillEye } from "react-icons/ai"
 import { Link } from 'react-router-dom'
+import { IncidentType } from '../../../context/userIncidentContext'
 
-const AllIncidentCard = ({ id, title, image}: IncidentProps) => {
+const AllIncidentCard = ({ id, type, image}: IncidentType) => {
     return (
         <div>
             <Card
@@ -20,7 +20,7 @@ const AllIncidentCard = ({ id, title, image}: IncidentProps) => {
                 <div className='flex justify-between items-center'>
                     <H2
                         className='text-black-950 text-[24px] mt-3'
-                        title={title}
+                        title={type}
                     />
                     <div>
                        <Link to={`/inc/${id}`}>

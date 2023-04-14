@@ -2,8 +2,16 @@ import React from 'react'
 import { imgHero } from '../../assets/images'
 import { googleIcon } from '../../assets/icons'
 import { Grid, H1, Button } from '../../component'
+import { handleGoogleAuth } from '../../auth/handleGoogleAuth'
+import { useNavigate } from 'react-router'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../../firebase/firebase'
 
 const Hero = () => {
+
+    const navigate = useNavigate()
+    const [user] = useAuthState(auth)
+
     return (
         <div>
             <Grid
@@ -30,18 +38,23 @@ const Hero = () => {
                         Sign in to your Google Account and begin reporting incidents now.
                     </p>
 
-                    <div className='mt-8'>
-                        <Button
-                            arial-label='Sign in with Google'
-                            className='bg-pastel-green-800 text-mercury-white-50 font-bold w-72
+                    {
+                        !user && (
+                            <div className='mt-8'>
+                                <Button
+                                    arial-label='Sign in with Google'
+                                    className='bg-pastel-green-800 text-mercury-white-50 font-bold w-72
                             mobileM:w-60
                             hover:bg-pastel-green-600 
                             '
-                        >
-                            <img src={googleIcon} alt='google' className='mr-4 h-4 w-4' />
-                            Sign in with Google
-                        </Button>
-                    </div>
+                                    onClick={handleGoogleAuth(navigate)}
+                                >
+                                    <img src={googleIcon} alt='google' className='mr-4 h-4 w-4' />
+                                    Sign in with Google
+                                </Button>
+                            </div>
+                        )
+                    }
 
                     <div className='flex items-center mt-10 text-3xl
                      font-bold

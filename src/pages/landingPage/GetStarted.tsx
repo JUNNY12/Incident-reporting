@@ -2,8 +2,17 @@ import React from 'react'
 import { Grid, H2, Button } from '../../component'
 import { googleIcon } from '../../assets/icons'
 import { get } from '../../assets/icons'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../../firebase/firebase'
+import { handleGoogleAuth } from '../../auth'
+import { useNavigate } from 'react-router'
 
 const GetStarted = () => {
+
+    const navigate = useNavigate()
+
+    const [user] = useAuthState(auth)
+
     return (
         <div className='mt-8'>
             <div className='flex items-center justify-center'>
@@ -33,18 +42,24 @@ const GetStarted = () => {
                         our support team is here to help. Contact us anytime.
                     </p>
 
-                    <div className='mt-8'>
-                        <Button
-                            arial-label='get started'
-                            className='text-mercury-white-50 bg-pastel-green-900 font-bold w-72
-                            mobileM:w-60
-                            hover:bg-pastel-green-600 
-                            '
-                        >
-                            <img src={googleIcon} alt='google' className='mr-4 h-4 w-4' />
-                            Get Started
-                        </Button>
-                    </div>
+                    {
+                        !user && (
+                            <div className='mt-8'>
+                                <Button
+                                onClick={handleGoogleAuth(navigate)}
+                                    arial-label='get started'
+                                    className='text-mercury-white-50 bg-pastel-green-900 font-bold w-72
+                                    mobileM:w-60
+                                    hover:bg-pastel-green-600 
+                                    '
+                                >
+                                    <img src={googleIcon} alt='google' className='mr-4 h-4 w-4' />
+                                    Get Started
+                                </Button>
+                            </div>
+                        )
+                    }
+
                 </div>
                 <div>
                     <img src={get} alt='get started' className='w-60 h-72 

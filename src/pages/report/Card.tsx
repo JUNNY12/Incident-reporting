@@ -1,10 +1,10 @@
 import React from 'react'
-import { Card, H2 } from '../../../component'
+import { Card, H2 } from '../../component'
 import { AiFillEye } from "react-icons/ai"
 import { Link } from 'react-router-dom'
-import { IncidentType } from '../../../context/userIncidentContext'
+import { IncidentType } from '../../context/userIncidentContext'
 
-const RecentCard = ({ id, type, image}: IncidentType) => {
+const IncidentCard = ({ id, type, image}: IncidentType) => {
     return (
         <div>
             <Card
@@ -34,4 +34,4 @@ const RecentCard = ({ id, type, image}: IncidentType) => {
     )
 }
 
-export default RecentCard
+export default IncidentCard

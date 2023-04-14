@@ -1,1 +1,1 @@
-export {getIncidents, postIncident} from './api'
+export {getUserIncidents, postIncident, getAllIncidents} from './api'

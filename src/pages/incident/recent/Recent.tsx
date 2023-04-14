@@ -1,41 +1,63 @@
 import React from 'react'
 import { H1, Card, Grid } from '../../../component'
 import RecentCard from './RecentCard'
-import { IncidentData } from '../../../context/dataContext/DataContext'
+import useAllIncident from '../../../hooks/useAllIncident'
+import { PuffLoader } from 'react-spinners'
+import { SearchContext } from '../../../context/SearchContext'
+import { useContext } from 'react'
 
 const Recent = () => {
+
+    const { searchState } = useContext(SearchContext)
+    const { searchResults, query } = searchState
+    const { incidents, loading } = useAllIncident()
+
+    const displayedIncidents = query ? searchResults : incidents
+
+    let content
+    if (displayedIncidents.length===0 && incidents.length > 0) (
+        content = (
+            <p className='flex items-center justify-center text-2xl'>
+                oops!! No incident found
+            </p>
+        )
+    )
     return (
         <div className='mb-10'>
             <H1
                 title='Recent Incidents'
                 className='text-black-950 mobileXL:text-center mobileXL:text-3xl font-bold'
             />
+            <div>
+                {content}
+            </div>
 
             <Grid
-            className='grid-cols-4 place-items-center gap-8
+                className='grid-cols-4 place-items-center gap-8
             laptopS:grid-cols-3 laptopS:gap-x-4
             tabletM:grid-cols-2
             mobileXL:grid-cols-1
             '
             >
-                {IncidentData.slice(0,4).map((incident) => {
+                {displayedIncidents?.reverse()?.slice(0, 4).map((incident) => {
 
-                    const { id, title, description, time, date, location, image, status } = incident
+                    const { id, type, description, time, date, latitude, image, longitude } = incident
                     return (
                         <RecentCard
                             key={id}
                             id={id}
-                            status={status}
-                            title={title}
+                            longitude={longitude}
+                            type={type}
                             time={time}
                             date={date}
                             image={image}
-                            location={location}
+                            latitude={latitude}
                             description={description}
                         />
                     )
                 })}
             </Grid>
+            {loading && <div className='flex items-center justify-center'> <PuffLoader color='#116a31' size={150} /></div>}
 
         </div>
     )

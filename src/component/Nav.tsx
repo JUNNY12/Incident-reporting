@@ -3,11 +3,14 @@ import { Button } from './Button'
 import { useEffect, useState } from 'react'
 import SideBar from './SideBar'
 import { AiOutlineMenu } from "react-icons/ai"
-
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../firebase/firebase'
 
 const Nav = () => {
     const [isScrolled, setIsScrolled] = useState(false)
     const [showSideBar, setShowSideBar] = useState(false)
+
+    const [user, loading] = useAuthState(auth)
 
     // This is the scroll effect to change the color of the nav bar
     useEffect(() => {
@@ -39,9 +42,9 @@ const Nav = () => {
 
             {/* This is the nav bar */}
             <nav className={!isScrolled ?
-                'h-16 flex items-center justify-between z-20  pt-4 pb-4 ps-12 pe-12 text-black-950 bg-mercury-white-50 fixed w-full mobileL:ps-8 mobileL:pe-8'
+                'h-20 flex items-center justify-between z-20  pt-4 pb-4 ps-12 pe-12 text-black-950 bg-mercury-white-50 fixed w-full mobileL:ps-8 mobileL:pe-8'
                 :
-                (' transition ease-in-out duration-1000 h-16 flex items-center justify-between z-20 bg-mercury-white-100 pt-4 pb-4 ps-12 pe-12 text-pastel-green-800 fixed w-full mobileL:ps-8 mobileL:pe-8 shadow-lg ')
+                (' transition ease-in-out duration-1000 h-20 flex items-center justify-between z-20 bg-mercury-white-100 pt-4 pb-4 ps-12 pe-12 text-pastel-green-800 fixed w-full mobileL:ps-8 mobileL:pe-8 shadow-lg ')
             }
             >
 
@@ -60,9 +63,13 @@ const Nav = () => {
                         <Link to='/incident'>Incidents</Link>
                     </li>
 
-                    <li className='mr-10 font-bold text-2xl'>
-                        <Link to='/report'>Report</Link>
-                    </li>
+                    {
+                        user && (
+                            <li className='mr-10 font-bold text-2xl'>
+                                <Link to='/report'>Report</Link>
+                            </li>
+                        )
+                    }
 
                     <li className='mr-10 font-bold text-xl'>
                         <Link to='/contact'>
