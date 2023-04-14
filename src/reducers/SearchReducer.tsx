@@ -1,4 +1,4 @@
-import { IncidentType } from "../context/AllIncidentContext";
+import { IncidentType } from "../context/userIncidentContext";
 
 type SearchState = {
     query: string,
