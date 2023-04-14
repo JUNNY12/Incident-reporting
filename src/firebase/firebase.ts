@@ -6,7 +6,7 @@ import { getStorage } from "firebase/storage";
 
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_REACT_APP_API_KEY,
+  apiKey: "AIzaSyBkRJBBfBCfvlc5kAo_TXgf4ZRnxnr52Yk",
   authDomain: "incident-reporting-383016.firebaseapp.com",
   projectId: "incident-reporting-383016",
   storageBucket: "incident-reporting-383016.appspot.com",

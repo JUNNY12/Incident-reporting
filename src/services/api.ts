@@ -2,7 +2,9 @@ import axiosInstance from "../axios/axios";
 import { IncidentType } from "../context/userIncidentContext";
 
 
-const auth: string = import.meta.env.VITE_REACT_APP_AUTH_KEY;
+const auth: string = 'EmrET9KcVW4jjptzst2Fh1H1vbqHc0jNIR8WWm5B'
+
+// const auth: string = import.meta.env.VITE_REACT_APP_AUTH_KEY;
 
 export const getUserIncidents = async (uid: string) => {
     try {
