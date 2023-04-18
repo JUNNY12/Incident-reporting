@@ -14,10 +14,10 @@ const AllIncident = () => {
 
     const { searchState } = useContext(SearchContext)
     const { searchResults, query } = searchState
-    
+
     const { incidents, loading } = useAllIncident()
 
-    const { currentIncidents, pageCount, handlePageClick } = usePagination({incidents})
+    const { currentIncidents, pageCount, handlePageClick, currentPage } = usePagination({ incidents, perPage: 8 })
 
 
     const displayedIncidents = query ? searchResults : currentIncidents
@@ -38,6 +38,10 @@ const AllIncident = () => {
 
     return (
         <div className='mb-10'>
+            {
+                currentPage === 0 ? ' ' :
+                    <div className='text-3xl mb-4 absolute top-[180px]'>(Page {currentPage + 1} / {pageCount})</div>
+            }
             <H1
                 title='All Incidents'
                 className='text-black-950 mobileXL:text-center 
@@ -87,7 +91,7 @@ const AllIncident = () => {
                 previousClassName='border-2 border-mercury-white-50 rounded-sm p-1 ms-2'
                 previousLabel="prev "
                 pageClassName='m-3'
-                activeLinkClassName='border-2 border-pastel-green-600 rounded-full h-[30px] w-[30px] inline-flex items-center justify-center  p-2 text-pastel-green-600 bg-mercury-white-50' 
+                activeLinkClassName='border-2 border-pastel-green-600 rounded-full h-[30px] w-[30px] inline-flex items-center justify-center  p-2 text-pastel-green-600 bg-mercury-white-50'
             />
         </div>
     )

@@ -12,13 +12,22 @@ export const usePagination = ({ perPage = 8 , incidents}: UsePaginationProps) =>
 
     const pageCount = Math.ceil(incidents.length / perPage);
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        })
+    }
+
     const handlePageClick = ({ selected }: { selected: number }) => {
         setCurrentPage(selected);
+        scrollToTop();
+        
     };
 
     const startIndex = currentPage * perPage;
     const endIndex = startIndex + perPage;
     const currentIncidents = incidents.slice(startIndex, endIndex);
 
-    return { currentIncidents, pageCount, handlePageClick };
+    return { currentIncidents, pageCount, handlePageClick,currentPage };
 };

@@ -10,15 +10,19 @@ import ReactPaginate from 'react-paginate'
 
 const IncidentReport = () => {
     const { incidents, loading } = useIncident()
-    const { currentIncidents, pageCount, handlePageClick } = usePagination({ incidents })
+    const { currentIncidents, pageCount, handlePageClick, currentPage } = usePagination({ incidents })
 
-    let empty ;
+    let empty;
     if (incidents.length === 0 && incidents.length < 0) {
         empty = <Empty />
     }
 
     return (
         <div className='font-myFont'>
+            {
+                currentPage === 0 ? ' ' :
+                    <div className='text-3xl mb-4'>(Page {currentPage + 1} / {pageCount})</div>
+            }
             <H2 title='Your Reports'
                 className='text-pastel-green-800 inline-block text-center font-bold  mobileL:text-3xl'
             />
@@ -45,7 +49,7 @@ const IncidentReport = () => {
             <div>
                 {empty}
             </div>
-            {loading && <div className='flex items-center justify-center'> <PuffLoader color='#116a31' size={150} /></div>} 
+            {loading && <div className='flex items-center justify-center'> <PuffLoader color='#116a31' size={150} /></div>}
             <ReactPaginate
                 pageCount={pageCount}
                 onPageChange={handlePageClick}
@@ -58,7 +62,7 @@ const IncidentReport = () => {
                 previousClassName='border-2 border-mercury-white-50 rounded-sm p-1 ms-2'
                 previousLabel="prev "
                 pageClassName='m-3'
-                activeLinkClassName='border-2 border-pastel-green-600 rounded-full h-[30px] w-[30px] inline-flex items-center justify-center  p-2 text-pastel-green-600 bg-mercury-white-50' 
+                activeLinkClassName='border-2 border-pastel-green-600 rounded-full h-[30px] w-[30px] inline-flex items-center justify-center  p-2 text-pastel-green-600 bg-mercury-white-50'
             />
         </div>
     )

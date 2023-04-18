@@ -30,7 +30,7 @@ const Recent = () => {
     }
 
     return (
-        <div className='mb-10'>
+        <div className='mb-10 mt-20'>
             <H1
                 title='Recent Incidents'
                 className='text-black-950 mobileXL:text-center mobileXL:text-3xl font-bold'
