@@ -63,7 +63,7 @@ const Report = () => {
         }
 
         {
-          width < 768 && (
+          width < 768 && !showForm && (
             <div className='text-pastel-green-800 text-6xl fixed right-4 bottom-10 z-10'>
               <button
               className='cursor-pointer'

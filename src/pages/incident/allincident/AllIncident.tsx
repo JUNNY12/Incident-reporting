@@ -6,14 +6,22 @@ import { PuffLoader } from 'react-spinners'
 import { SearchContext } from '../../../context/SearchContext'
 import { useContext } from 'react'
 import Empty from '../../report/Empty'
+import { usePagination } from '../../../hooks/usePagination'
+import ReactPaginate from 'react-paginate';
+
 
 const AllIncident = () => {
 
     const { searchState } = useContext(SearchContext)
     const { searchResults, query } = searchState
+    
     const { incidents, loading } = useAllIncident()
 
-    const displayedIncidents = query ? searchResults : incidents
+    const { currentIncidents, pageCount, handlePageClick } = usePagination({incidents})
+
+
+    const displayedIncidents = query ? searchResults : currentIncidents
+
     let content
     if (displayedIncidents.length === 0 && incidents.length > 0) (
         content = (
@@ -23,7 +31,7 @@ const AllIncident = () => {
         )
     )
 
-    let empty ;
+    let empty;
     if (incidents.length === 0 && incidents.length < 0) {
         empty = <Empty />
     }
@@ -67,7 +75,20 @@ const AllIncident = () => {
             </Grid>
 
             {loading && <div className='flex items-center justify-center'> <PuffLoader color='#116a31' size={150} /></div>}
-
+            <ReactPaginate
+                pageCount={pageCount}
+                onPageChange={handlePageClick}
+                containerClassName='flex items-center justify-center rounded-sm mt-16 bg-pastel-green-600 text-mercury-white-50 h-[45px]'
+                pageRangeDisplayed={2}
+                marginPagesDisplayed={2}
+                breakLabel='...'
+                nextLabel="next"
+                nextClassName='border-2 border-mercury-white-50 rounded-sm p-1 ms-2 '
+                previousClassName='border-2 border-mercury-white-50 rounded-sm p-1 ms-2'
+                previousLabel="prev "
+                pageClassName='m-3'
+                activeLinkClassName='border-2 border-pastel-green-600 rounded-full h-[30px] w-[30px] inline-flex items-center justify-center  p-2 text-pastel-green-600 bg-mercury-white-50' 
+            />
         </div>
     )
 }

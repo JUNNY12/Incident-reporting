@@ -2,8 +2,17 @@ import React from 'react'
 import { Card, H2 } from '../../../component'
 import { Link } from 'react-router-dom'
 import { IncidentType } from '../../../context/userIncidentContext'
+import { CircleLoader } from 'react-spinners'
+
+
 
 const AllIncidentCard = ({ id, type, image }: IncidentType) => {
+
+    const [isLoaded, setIsLoaded] = React.useState(false)
+
+    const handleImageLoaded = () => {
+        setIsLoaded(true)
+    }
     return (
         <div>
             <Card
@@ -12,10 +21,20 @@ const AllIncidentCard = ({ id, type, image }: IncidentType) => {
                 mobileXL:w-72 mobileXL:h-72 group
                 '
             >
-                <img src={image} alt="" className='w-full h-48 object-cover 
-                tabletXS:h-32
-                mobileXL:h-44
-                ' />
+
+                <img
+                    onLoad={handleImageLoaded}
+                    src={image} alt="" className={`w-full h-48 object-cover tabletXS:h-32
+                    mobileXL:h-44 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+
+                />
+                <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                    {
+                        !isLoaded && (
+                            <CircleLoader size={100} color='#0dac45' />
+                        )
+                    }
+                </div>
                 <div className='mt-8'>
                     <H2
                         className='text-black-950 text-[24px] mt-3'

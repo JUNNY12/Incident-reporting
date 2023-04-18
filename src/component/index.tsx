@@ -11,6 +11,7 @@ import { Flex } from "./Container";
 import {Input , TextField} from "./Input";
 import SideBar from "./SideBar";
 import { ScrollToTop } from "./ScrollToTop";
+import {CountUp} from "./CountUp";
 
 export { 
         Loader,
@@ -28,5 +29,6 @@ export {
         Input,
         TextField,
         SideBar,
-        ScrollToTop
+        ScrollToTop,
+        CountUp
     };

@@ -139,7 +139,7 @@ const Form = ({ setShowForm }: FormProps) => {
 
     return (
         <div className='mt-10 bg-pastel-green-800 font-myFont
-         w-[700px] p-12 absolute
+         w-[700px] p-12 fixed
          tabletS:w-[420px] mobileL:w-[320px] mobileM:w-[290px]
          top-72 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10
          '>

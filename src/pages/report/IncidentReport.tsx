@@ -5,10 +5,12 @@ import IncidentCard from './Card'
 import { IncidentType } from '../../context/userIncidentContext'
 import { Grid } from '../../component'
 import { PuffLoader } from 'react-spinners'
-import { useState } from 'react'
+import { usePagination } from '../../hooks/usePagination'
+import ReactPaginate from 'react-paginate'
 
 const IncidentReport = () => {
     const { incidents, loading } = useIncident()
+    const { currentIncidents, pageCount, handlePageClick } = usePagination({ incidents })
 
     let empty ;
     if (incidents.length === 0 && incidents.length < 0) {
@@ -27,7 +29,7 @@ const IncidentReport = () => {
             mobileXL:grid-cols-1' >
 
                 {
-                    incidents?.map((incident: IncidentType) => {
+                    currentIncidents?.map((incident: IncidentType) => {
                         const { id, type, image } = incident
                         return (
                             <IncidentCard
@@ -44,6 +46,20 @@ const IncidentReport = () => {
                 {empty}
             </div>
             {loading && <div className='flex items-center justify-center'> <PuffLoader color='#116a31' size={150} /></div>} 
+            <ReactPaginate
+                pageCount={pageCount}
+                onPageChange={handlePageClick}
+                containerClassName='flex items-center justify-center rounded-sm mt-16 bg-pastel-green-600 text-mercury-white-50 h-[45px]'
+                pageRangeDisplayed={2}
+                marginPagesDisplayed={2}
+                breakLabel='...'
+                nextLabel="next"
+                nextClassName='border-2 border-mercury-white-50 rounded-sm p-1 ms-2 '
+                previousClassName='border-2 border-mercury-white-50 rounded-sm p-1 ms-2'
+                previousLabel="prev "
+                pageClassName='m-3'
+                activeLinkClassName='border-2 border-pastel-green-600 rounded-full h-[30px] w-[30px] inline-flex items-center justify-center  p-2 text-pastel-green-600 bg-mercury-white-50' 
+            />
         </div>
     )
 }

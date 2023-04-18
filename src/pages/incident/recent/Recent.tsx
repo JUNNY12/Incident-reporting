@@ -39,14 +39,8 @@ const Recent = () => {
                 {content}
             </div>
 
-            <Grid
-                className='grid-cols-4 place-items-center gap-8
-            laptopS:grid-cols-3 laptopS:gap-x-4
-            tabletM:grid-cols-2
-            mobileXL:grid-cols-1
-            '
-            >
-                {displayedIncidents?.reverse()?.slice(0, 4).map((incident) => {
+            <div className='overflow-auto flex snap-mandatory scrollbar-hide'>
+                {displayedIncidents?.reverse()?.slice(0, 6).map((incident) => {
 
                     const { id, type, description, time, date, latitude, image, longitude } = incident
                     return (
@@ -63,7 +57,7 @@ const Recent = () => {
                         />
                     )
                 })}
-            </Grid>
+            </div>
             {loading && <div className='flex items-center justify-center'> <PuffLoader color='#116a31' size={150} /></div>}
 
         </div>

@@ -1,11 +1,12 @@
 import React from 'react'
 import { imgHero } from '../../assets/images'
 import { googleIcon } from '../../assets/icons'
-import { Grid, H1, Button } from '../../component'
+import { Grid, H1, Button, CountUp } from '../../component'
 import { handleGoogleAuth } from '../../auth/handleGoogleAuth'
 import { useNavigate } from 'react-router'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../firebase/firebase'
+
 
 const Hero = () => {
 
@@ -65,12 +66,12 @@ const Hero = () => {
 
                     >
                         <div className='font-bold mr-12'>
-                            <div>20 +</div>
+                            <div><CountUp start={0} end={30} duration={2} /> +</div>
                             <div>Users</div>
                         </div>
 
                         <div className='font-bold'>
-                            <div >100+</div>
+                            <div ><CountUp start={0} end={100} duration={3} />+</div>
                             <div>
                                 <span className='mr-2'>Incidents</span>
                                 <span className='mobileM:hidden'>Reported</span>
