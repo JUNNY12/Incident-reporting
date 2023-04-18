@@ -5,6 +5,7 @@ import useAllIncident from '../../../hooks/useAllIncident'
 import { PuffLoader } from 'react-spinners'
 import { SearchContext } from '../../../context/SearchContext'
 import { useContext } from 'react'
+import Empty from '../../report/Empty'
 
 const Recent = () => {
 
@@ -22,6 +23,12 @@ const Recent = () => {
             </p>
         )
     )
+    let empty ;
+    if (incidents.length === 0 && incidents.length < 0) {
+        empty = <Empty />
+        console.log('nothing')
+    }
+
     return (
         <div className='mb-10'>
             <H1

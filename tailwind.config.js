@@ -4,7 +4,9 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      display: ["group-hover"],
+    },
     fontFamily: {
       myFont: ['"Open Sans"', 'sans-serif'],
     },

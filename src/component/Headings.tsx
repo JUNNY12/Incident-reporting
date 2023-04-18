@@ -5,7 +5,7 @@ interface headingsProps {
 
 export const H1 = ({title, className}:headingsProps) => {
     return (
-        <h1 className={`leading-tight text-5xl font-myFont mb-6 ${className}`}>{title}</h1>
+        <h1 className={`leading-tight text-4xl font-myFont mb-6 ${className}`}>{title}</h1>
     )
 } 
 

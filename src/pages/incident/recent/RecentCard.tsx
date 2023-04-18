@@ -1,34 +1,34 @@
 import React from 'react'
 import { Card, H2 } from '../../../component'
-import { AiFillEye } from "react-icons/ai"
 import { Link } from 'react-router-dom'
 import { IncidentType } from '../../../context/userIncidentContext'
 
-const RecentCard = ({ id, type, image}: IncidentType) => {
+const RecentCard = ({ id, type, image }: IncidentType) => {
     return (
         <div>
             <Card
-                className='w-60 h-60 mb-6 object-cover relative shadow-xl 
+                className='w-60 h-80 mb-6 object-cover relative shadow-xl 
                 tabletXS:w-52 tabletXS:h-52
-                mobileXL:w-72 mobileXL:h-72
+                mobileXL:w-72 mobileXL:h-72 group
                 '
             >
-                <img src={image} alt="" className='w-full h-36 
+                <img src={image} alt="" className='w-full h-48 object-cover 
                 tabletXS:h-32
                 mobileXL:h-44
                 ' />
-                <div className='flex justify-between items-center'>
-                    <H2
-                        className='text-black-950 text-[24px] mt-3'
-                        title={type}
-                    />
+                <div className='mt-8 '>
                     <div>
-                       <Link to={`/inc/${id}`}>
-                            <AiFillEye className='text-black-950 text-[28px] cursor-pointer' />
-                       </Link>
+                        <H2
+                            className='text-black-950 text-xl'
+                            title={type}
+                        />
+                    </div>
+                    <div role='button' className=' hidden group-hover:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition duration-300 ease-in-out'>
+                        <Link to={`/inc/${id}`} className='bg-pastel-green-600 rounded-sm text-mercury-white-50 w-[40px] h-[10px] p-2'>
+                            View
+                        </Link>
                     </div>
                 </div>
-
             </Card>
         </div>
     )

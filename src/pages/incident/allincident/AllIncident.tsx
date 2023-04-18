@@ -5,6 +5,7 @@ import useAllIncident from '../../../hooks/useAllIncident'
 import { PuffLoader } from 'react-spinners'
 import { SearchContext } from '../../../context/SearchContext'
 import { useContext } from 'react'
+import Empty from '../../report/Empty'
 
 const AllIncident = () => {
 
@@ -22,6 +23,10 @@ const AllIncident = () => {
         )
     )
 
+    let empty ;
+    if (incidents.length === 0 && incidents.length < 0) {
+        empty = <Empty />
+    }
 
     return (
         <div className='mb-10'>
@@ -30,6 +35,7 @@ const AllIncident = () => {
                 className='text-black-950 mobileXL:text-center 
                  mobileXL:text-3xl font-bold'
             />
+            <div>{empty}</div>
             <div>
                 {content}
             </div>

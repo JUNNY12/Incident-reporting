@@ -21,6 +21,7 @@ export const getUserIncidents = async (uid: string) => {
 };
 
 export const getAllIncidents = async () => {
+
     try {
         const response = await axiosInstance.get(`users.json?auth=${auth}`);
         let allIncidents: IncidentType[] = [];

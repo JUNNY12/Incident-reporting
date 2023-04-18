@@ -23,7 +23,7 @@ export const AllIncidentsProvider = ({ children }: childrenType): React.ReactEle
 
   useEffect(() => {
     const fetchIncidents = async () => {
-      if (!user) return; // Exit if user is not defined
+  
 
       setLoading(true)
 

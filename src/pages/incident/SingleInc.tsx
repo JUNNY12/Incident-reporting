@@ -2,11 +2,9 @@ import React from 'react'
 import { useParams, useNavigate } from 'react-router'
 import { Button } from '../../component'
 import { IncidentType } from '../../context/userIncidentContext'
-
 import { Map, Marker } from "pigeon-maps"
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import useIncident from '../../hooks/useIncident'
+import useAllIncident from '../../hooks/useAllIncident'
+
 
 
 
@@ -17,13 +15,17 @@ interface Coordinates {
 
 const SingleInc = () => {
   const { id } = useParams()
-  const { incidents } = useIncident()
+  const { incidents } = useAllIncident()
+
+  // console.log(id)
 
   const navigate = useNavigate()
 
   const newData: IncidentType[] = incidents?.filter((data: IncidentType) => {
     return data.id === (id)
   })
+
+  // console.log(newData[0]?.latitude, newData[0]?.longitude)
 
 
   const latitude = newData[0]?.latitude ?? 0;
@@ -48,7 +50,7 @@ const SingleInc = () => {
 
         <div className=' w-1/2 tabletS:w-full'>
           <h1 className='text-4xl font-bold text-black-950 mb-4 tabletS:absolute tabletS:-top-12'>{newData[0]?.type}</h1>
-          <p className='text-black-950 mb-4 text-xl'>{newData[0]?.description}</p>
+          <p className='text-black-950 my-8 text-xl'>{newData[0]?.description}</p>
           <div className='mt-4 bg-pastel-green-50 h-[250px] w-full mb-8'>
             <Map height={250} defaultCenter={[latitude, longitude]} defaultZoom={16}>
               <Marker width={80} height={80} anchor={[latitude, longitude]} />

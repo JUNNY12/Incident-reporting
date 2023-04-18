@@ -7,7 +7,7 @@ import { IncidentType } from '../../context/userIncidentContext'
 import { toast } from 'react-toastify'
 import { storage } from '../../firebase/firebase'
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
-import useIncident from '../../hooks/useIncident'
+import { CircleLoader } from 'react-spinners'
 
 interface FormProps {
     setShowForm: (value: boolean) => void
@@ -33,6 +33,7 @@ const Form = ({ setShowForm }: FormProps) => {
 
     const [imagePreview, setImagePreview] = React.useState<string>('')
     const [progress, setProgress] = React.useState<number>(0)
+    const [loading, setLoading] = React.useState<boolean>(false)
 
     const handleChange = (e: any) => {
         const { name, value } = e.target
@@ -91,6 +92,7 @@ const Form = ({ setShowForm }: FormProps) => {
 
 
         try {
+            setLoading(true)
             //getting location
             const position = await new Promise<GeolocationPosition>((resolve, reject) => {
                 navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -122,7 +124,8 @@ const Form = ({ setShowForm }: FormProps) => {
                 progress: undefined,
             });
 
-            console.log(formData);
+            // console.log(formData);
+            setLoading(false)
             closeForm();
         } catch (error) {
             console.log(error);
@@ -174,16 +177,6 @@ const Form = ({ setShowForm }: FormProps) => {
                     </div>
                     <div></div>
 
-                    <div className='mb-3 text-pastel-green-50 text-xl font-bold'>Or</div>
-
-                    <div className='mb-3'>
-                        <Button className='w-[600px] font-bold
-                text-pastel-green-800 bg-mercury-white-50
-                 tabletS:w-[400px] mobileL:w-[280px]
-                 '>Capture Image</Button>
-                    </div>
-
-
                     <div className='mb-3'>
                         <TextField
                             placeholder='Brief Description'
@@ -199,7 +192,9 @@ const Form = ({ setShowForm }: FormProps) => {
                         <Button className='w-[600px] font-bold
                         text-pastel-green-800 bg-mercury-white-50
                         tabletS:w-[400px] mobileL:w-[280px]
-                 '>Submit</Button>
+                         '>
+                            {loading ? <CircleLoader size={20} color='#116a31' /> : 'Report'}
+                        </Button>
                     </div>
 
                 </div>
