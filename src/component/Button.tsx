@@ -2,9 +2,10 @@ interface buttonProps {
     children: React.ReactNode;
     className?: string;
     onClick?: () => void;
+    title?: string;
 }
 
-export const Button = ({ children, className, onClick }: buttonProps) => {
+export const Button = ({ children, className, onClick, title }: buttonProps) => {
     return (
         <button className={`hover:bg-pastel-green-200
          transition-all duration-300 ease-in-out
@@ -12,6 +13,7 @@ export const Button = ({ children, className, onClick }: buttonProps) => {
       
         ${className}`}
         onClick={onClick}
+        title={title}
         >
             {children}
         </button>

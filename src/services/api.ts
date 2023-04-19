@@ -13,7 +13,7 @@ export const getUserIncidents = async (uid: string) => {
         for (const key in response.data) {
             incidents.push({ ...response.data[key], id: key })
         }
-
+        incidents.reverse();
         return incidents;
     } catch (error: any) {
         console.log(error);
@@ -37,6 +37,7 @@ export const getAllIncidents = async () => {
                 //   console.log(incident)
                 //pushing the incident to the allIncidents array and the key as id
                 allIncidents.push({ ...incident, id: incidentKey });
+                allIncidents.reverse();
             }
         }
         console.log(allIncidents);

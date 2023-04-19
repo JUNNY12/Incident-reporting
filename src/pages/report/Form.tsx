@@ -100,11 +100,17 @@ const Form = ({ setShowForm }: FormProps) => {
 
             //getting date and time
             const now = new Date();
-            const date = `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`;
+            const month = now.getMonth() + 1;
+            const day = now.getDate();
+            const year = now.getFullYear();
+            const date = `${month}/${day}/${year}`;
+
             const isPm = now.getHours() >= 12 ? 'PM' : 'AM';
             const hours = now.getHours() > 12 ? now.getHours() - 12 : now.getHours();
-            const time = `${hours}:${now.getMinutes()} ${isPm}`;
-
+            const paddedHours = hours < 10 ? '0' + hours : hours;
+            const minutes = now.getMinutes();
+            const paddedMinutes = minutes < 10 ? '0' + minutes : minutes;
+            const time = `${paddedHours}:${paddedMinutes} ${isPm}`;
 
             await postIncident(uid, {
                 ...formData,

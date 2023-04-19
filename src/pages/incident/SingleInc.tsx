@@ -44,7 +44,7 @@ const SingleInc = () => {
 
 
       <div className='mt-20 flex items-center justify-center gap-x-10 tabletS:flex-col relative'>
-        <div className='w-[500px] h-[500px] tabletS:w-[300px] tabletS:h-[300px] mobileXL:w-[280px] mobileXL:h-[280px]'>
+        <div className='w-[500px] h-[500px] tabletS:w-[300px] tabletS:h-[300px] object-cover mobileXL:w-[280px] mobileXL:h-[280px]'>
           <img src={newData[0]?.image} alt={newData[0]?.type} className='object-cover w-full h-full ' />
         </div>
 

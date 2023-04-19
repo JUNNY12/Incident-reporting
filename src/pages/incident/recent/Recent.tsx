@@ -40,7 +40,7 @@ const Recent = () => {
             </div>
 
             <div className='overflow-auto flex snap-mandatory scrollbar-hide'>
-                {displayedIncidents?.reverse()?.slice(0, 6).map((incident) => {
+                {displayedIncidents?.slice(0, 6).map((incident) => {
 
                     const { id, type, description, time, date, latitude, image, longitude } = incident
                     return (

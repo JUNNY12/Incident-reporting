@@ -12,6 +12,7 @@ import {Input , TextField} from "./Input";
 import SideBar from "./SideBar";
 import { ScrollToTop } from "./ScrollToTop";
 import {CountUp} from "./CountUp";
+import {Profile} from "./Profile";
 
 export { 
         Loader,
@@ -30,5 +31,6 @@ export {
         TextField,
         SideBar,
         ScrollToTop,
-        CountUp
+        CountUp,
+        Profile
     };
