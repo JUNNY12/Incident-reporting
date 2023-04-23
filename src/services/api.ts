@@ -97,7 +97,7 @@ export const getUserToken = async (uid: string) => {
     }
 }
 
-export const sendNotification = async (uid:string) => {
+export const sendNotification = async (uid: string) => {
 
     const Alltokens = await getTokens();
     const userToken = await getUserToken(uid);
@@ -106,23 +106,35 @@ export const sendNotification = async (uid:string) => {
     const message = {
         "notification": {
             "title": "New Incident",
-            "body": "There is a new incident",
+            "body": "There is a new incident report",
             "click_action": "https://incident-reporting.vercel.app/incident",
             "sound": "default",
         },
-        "registration_ids":tokensToSendNotification
-    }
-    try {
-        const response = await axios.post('https://fcm.googleapis.com/fcm/send', message, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${server_key}`
+        "registration_ids": tokensToSendNotification,
+        "android": {
+            "ttl": "86400s",
+            "notification": {
+                "click_action": "https://incident-reporting.vercel.app/incident",
             }
-        });
-        // console.log("Notification sent successfully");
-        console.log(response.data);
-    } catch (error) {
-        console.log(error);
+        },
+        "apns": {
+            "headers": {
+                "apns-priority": "5",
+            },
+        }
     }
-};
+
+    try {
+            const response = await axios.post('https://fcm.googleapis.com/fcm/send', message, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${server_key}`
+                }
+            });
+            // console.log("Notification sent successfully");
+            console.log(response.data);
+        } catch(error) {
+            console.log(error);
+        }
+    };
 
