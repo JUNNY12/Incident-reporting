@@ -34,7 +34,7 @@ export const AllIncidentsProvider = ({ children }: childrenType): React.ReactEle
       setIncidents(fetchedAll);
       setLoading(false)
 
-      console.log(fetchedAll);
+      // console.log(fetchedAll);
     };
 
     fetchIncidents();
@@ -42,7 +42,7 @@ export const AllIncidentsProvider = ({ children }: childrenType): React.ReactEle
   }, [user]);
 
 
-  console.log(incidents)
+  // console.log(incidents)
 
 
   return (

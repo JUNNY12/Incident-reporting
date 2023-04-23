@@ -60,7 +60,7 @@ const AllIncident = () => {
             '
             >
                 {displayedIncidents?.map((incident) => {
-                    console.log(incident)
+                    // console.log(incident)
                     const { id, type, latitude, longitude, description, time, date, image, } = incident
                     return (
                         <AllIncidentCard

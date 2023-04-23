@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 import { storage } from '../../firebase/firebase'
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
 import { CircleLoader } from 'react-spinners'
+import { sendNotification } from "../../services"
 
 interface FormProps {
     setShowForm: (value: boolean) => void
@@ -19,6 +20,7 @@ const Form = ({ setShowForm }: FormProps) => {
     //getting user id
     const [user] = useAuthState(auth)
     let uid: any = user?.uid
+
 
     //form data
     const [formData, setFormData] = React.useState<IncidentType>({
@@ -49,11 +51,20 @@ const Form = ({ setShowForm }: FormProps) => {
     const { type, description } = formData
 
     const fileRef = useRef<HTMLInputElement>(null)
-    const handleImage = (e: any) => {
+    const handleImage = async (e: any) => {
         const file = fileRef.current?.files?.[0];
         if (!file) return;
 
         const storageRef = ref(storage, `incidentImage/${file.name}`)
+
+        try {
+            const downloadURL = await getDownloadURL(storageRef);
+            toast.error('File with same name already exists!');
+            return;
+        } catch (error) {
+            // File does not exist, continue with upload
+        }
+
         const uploadTask = uploadBytesResumable(storageRef, file)
 
         uploadTask.on('state_changed', (snapshot) => {
@@ -133,6 +144,9 @@ const Form = ({ setShowForm }: FormProps) => {
             // console.log(formData);
             setLoading(false)
             closeForm();
+
+            //sending notification
+            await sendNotification(uid)
         } catch (error) {
             console.log(error);
         }

@@ -1,8 +1,11 @@
 import { initializeApp } from "firebase/app";
 import 'firebase/auth';
-import {getAuth} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import 'firebase/firestore';
 import { getStorage } from "firebase/storage";
+import { getMessaging } from "firebase/messaging";
+import { onMessage } from "firebase/messaging";
+import { getDatabase } from "firebase/database";
 
 
 const firebaseConfig = {
@@ -20,6 +23,19 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 export { auth };
 const storage = getStorage(app);
-export { storage };
+const messaging = getMessaging(app);
+const db = getDatabase(app);
+
+export const onMessageListener = () =>
+  new Promise((resolve) => {
+    onMessage(messaging, (payload) => {
+      console.log("payload", payload)
+      resolve(payload);
+    });
+  });
+
+export { storage, db };
+export {messaging}
+
 
 export default app;

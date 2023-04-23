@@ -1,1 +1,9 @@
-export {getUserIncidents, postIncident, getAllIncidents} from './api'
+export {
+    getUserIncidents,
+    postIncident,
+    getAllIncidents,
+    updateUserNotificationToken,
+    getTokens, sendNotification,
+    getUserToken
+}
+    from './api'

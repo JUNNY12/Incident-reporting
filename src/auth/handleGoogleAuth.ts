@@ -3,6 +3,7 @@ import { auth } from "../firebase/firebase";
 import { checkGoogleError } from "../utility/checkError";
 import { NavigateFunction } from "react-router";
 import { toast } from "react-toastify";
+import { requestPermission } from "../utility/requestPermission";
 
 const provider = new GoogleAuthProvider();
 
@@ -11,7 +12,9 @@ export const handleGoogleAuth = (navigate: NavigateFunction) => async () => {
   try {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
-    console.log(user);
+    const uid = user.uid;
+    console.log(uid);
+    console.log(user?.uid);
     toast.success("You have successfully logged in",{
         position: "top-center",
         autoClose: 1000,
@@ -22,6 +25,8 @@ export const handleGoogleAuth = (navigate: NavigateFunction) => async () => {
         progress: undefined,
     });
     navigate('/report');
+    requestPermission(uid)
+    // 
   } catch (error: any) {
     console.log(error);
     checkGoogleError(error.code);

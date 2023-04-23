@@ -22,8 +22,9 @@ const Report = () => {
   const [authenticated, setAuthenticated] = useState(false)
   const [showProfile, setShowProfile] = useState(false)
 
-
   const navigate = useNavigate()
+
+  const uid = user?.uid;
 
   useEffect(() => {
     if (!user && !loading) {
@@ -31,6 +32,7 @@ const Report = () => {
     }
     setAuthenticated(user ? true : false);
   }, [user, loading, navigate]);
+
 
   if (loading) {
     return <Loader />;
@@ -60,6 +62,10 @@ const Report = () => {
           title='profile'
           aria-label='profile'>
           <FaUserCircle className='w-12 h-12 text-pastel-green-800' />
+
+          <div className='absolute -bottom-4 left-4'>
+            <BiDownArrow className='w-4 h-4 text-pastel-green-800' />
+          </div>
         </div>
         {
           showProfile && <Profile setShowProfile={setShowProfile} />
