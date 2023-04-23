@@ -107,7 +107,7 @@ export const sendNotification = async (uid:string) => {
         "notification": {
             "title": "New Incident",
             "body": "There is a new incident",
-            "click_action": "https://incident-reporting.vercel.app//incident",
+            "click_action": "https://incident-reporting.vercel.app/incident",
             "sound": "default",
         },
         "registration_ids":tokensToSendNotification
