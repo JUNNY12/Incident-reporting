@@ -13,8 +13,8 @@ export const handleGoogleAuth = (navigate: NavigateFunction) => async () => {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
     const uid = user.uid;
-    console.log(uid);
-    console.log(user?.uid);
+    // console.log(uid);
+    // console.log(user?.uid);
     toast.success("You have successfully logged in",{
         position: "top-center",
         autoClose: 1000,
@@ -26,7 +26,7 @@ export const handleGoogleAuth = (navigate: NavigateFunction) => async () => {
     });
     navigate('/report');
     requestPermission(uid)
-    // 
+    
   } catch (error: any) {
     console.log(error);
     checkGoogleError(error.code);
