@@ -9,6 +9,7 @@ import { storage } from '../../firebase/firebase'
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
 import { CircleLoader } from 'react-spinners'
 import { sendNotification } from "../../services"
+import ProgressBar from "@ramonak/react-progress-bar";
 
 interface FormProps {
     setShowForm: (value: boolean) => void
@@ -59,7 +60,15 @@ const Form = ({ setShowForm }: FormProps) => {
 
         try {
             const downloadURL = await getDownloadURL(storageRef);
-            toast.error('File with same name already exists!');
+            toast.error('File with same name already exists!', {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeButton: true,
+                draggable: false,
+                pauseOnHover: true,
+                progress: undefined,
+            });
             return;
         } catch (error) {
             // File does not exist, continue with upload
@@ -74,11 +83,12 @@ const Form = ({ setShowForm }: FormProps) => {
             if (progress === 100) {
                 toast.success('Image uploaded successfully!', {
                     position: toast.POSITION.TOP_CENTER,
-                    autoClose: false,
+                    autoClose: 1000,
                     hideProgressBar: true,
                     closeButton: true,
                     draggable: false,
                     pauseOnHover: true,
+                    progress: undefined,
                 });
             }
 
@@ -195,7 +205,11 @@ const Form = ({ setShowForm }: FormProps) => {
                   '
                         />
                     </div>
-                    <div></div>
+                    {
+                        (progress > 0)  && <div className='my-3'>
+                            <ProgressBar completed={progress} width='250px' bgColor='#53ea87' labelAlignment='center' />
+                        </div>
+                    }
 
                     <div className='mb-3'>
                         <TextField

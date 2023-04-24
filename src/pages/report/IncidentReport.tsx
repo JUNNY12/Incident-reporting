@@ -13,7 +13,7 @@ const IncidentReport = () => {
     const { currentIncidents, pageCount, handlePageClick, currentPage } = usePagination({ incidents })
 
     let empty;
-    if (incidents.length === 0 && incidents.length < 0) {
+    if (incidents.length === 0 && !loading) {
         empty = <Empty />
     }
 
@@ -51,7 +51,7 @@ const IncidentReport = () => {
             </div>
             {loading && <div className='flex items-center justify-center'> <PuffLoader color='#116a31' size={150} /></div>}
             {
-                !loading && (
+                (incidents.length !== 0) && (
                     <ReactPaginate
                         pageCount={pageCount}
                         onPageChange={handlePageClick}

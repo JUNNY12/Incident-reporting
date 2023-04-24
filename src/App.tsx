@@ -7,8 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Notification } from './component/Notification'
 
 function App() {
-
-
   return (
     <>
       <Suspense fallback={<Loader />}>
