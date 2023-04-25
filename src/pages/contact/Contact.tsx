@@ -210,7 +210,7 @@ const Contact = () => {
                 >
                   {
                     loading ?
-                      <span className='inline-flex justify-center items-center'>
+                      <span>
                         <span className='me-3'>Sending</span>
                         <span><BeatLoader size={10} color='#116a31' /></span>
 

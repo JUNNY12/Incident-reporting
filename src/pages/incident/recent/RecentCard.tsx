@@ -15,7 +15,7 @@ const RecentCard = ({ id, type, image,time }: IncidentType) => {
             <Card
                 className='w-60 h-80 mb-6 object-cover relative shadow-md me-10
                 tabletXS:w-52 tabletXS:h-52
-                mobileXL:w-72 mobileXL:h-72 group flex-shrink-0 snap-start scroll-smooth
+                mobileXL:w-72 mobileXL:h-80 group flex-shrink-0 snap-start scroll-smooth
                 '
             >
                 <img

@@ -56,7 +56,7 @@ const IncidentCard = ({ id, type, image, time }: IncidentType) => {
             <Card
                 className='w-60 h-80 mb-6 object-cover relative shadow-xl 
                 tabletXS:w-52 tabletXS:h-52
-                mobileXL:w-72 mobileXL:h-72 group
+                mobileXL:w-72 mobileXL:h-80 group
                 '
             >
 
