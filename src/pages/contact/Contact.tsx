@@ -202,7 +202,7 @@ const Contact = () => {
 
                 <Button
                   className='text-pastel-green-800 bg-mercury-white-50 font-bold w-80
-                 p-[1.7rem] rounded-md
+                 p-[1.7rem] rounded-md pb-4
                 hover:bg-pastel-green-50 hover:text-pastel-green-800
                   hover:transition ease-in-out duration-300
                 mobileL:w-60
