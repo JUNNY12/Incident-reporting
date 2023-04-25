@@ -36,7 +36,7 @@ const SingleInc = () => {
     return data.id === (id)
   })
 
-  console.log(newData[0]?.latitude, newData[0]?.longitude)
+  // console.log(newData[0]?.latitude, newData[0]?.longitude)
 
 
   const latitude = newData[0]?.latitude;

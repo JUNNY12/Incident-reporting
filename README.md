@@ -3,8 +3,8 @@
 This is a web application built with React and Firebase that allows users to report incidents and receive notifications when new incidents are reported.
 
 ## Features
-- Users can report incidents by filling out a form with details about the       incident.
-
+- Users can report incidents by filling out a form with details about the incident.
+- Users can delete incident report
 - Users receive notifications when new incidents are reported, as long as they have logged in before.
 - Incidents are stored in Firebase Realtime database, making it easy to view and manage reported incidents.
 
