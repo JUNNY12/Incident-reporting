@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { Input, Button, TextField } from '../../component'
-import { postIncident } from '../../services'
+import { getAllIncidents, getUserIncidents, postIncident } from '../../services'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../firebase/firebase'
 import { IncidentType } from '../../context/userIncidentContext'
@@ -10,6 +10,7 @@ import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
 import { CircleLoader } from 'react-spinners'
 import { sendNotification } from "../../services"
 import ProgressBar from "@ramonak/react-progress-bar";
+import useIncident from '../../hooks/useIncident'
 
 interface FormProps {
     setShowForm: (value: boolean) => void
@@ -37,6 +38,7 @@ const Form = ({ setShowForm }: FormProps) => {
     const [imagePreview, setImagePreview] = React.useState<string>('')
     const [progress, setProgress] = React.useState<number>(0)
     const [loading, setLoading] = React.useState<boolean>(false)
+    const { incidents, setIncidents } = useIncident()
 
     const handleChange = (e: any) => {
         const { name, value } = e.target
@@ -141,6 +143,10 @@ const Form = ({ setShowForm }: FormProps) => {
                 time: time
             });
 
+            //updating incident list
+           const response:any = await getUserIncidents(uid)
+            setIncidents(response)
+
             toast.success('Incident Reported Successfully', {
                 position: 'top-center',
                 autoClose: 1000,
@@ -206,7 +212,7 @@ const Form = ({ setShowForm }: FormProps) => {
                         />
                     </div>
                     {
-                        (progress > 0)  && <div className='my-3'>
+                        (progress > 0) && <div className='my-3'>
                             <ProgressBar completed={progress} width='250px' bgColor='#53ea87' labelAlignment='center' />
                         </div>
                     }
@@ -223,7 +229,9 @@ const Form = ({ setShowForm }: FormProps) => {
                     </div>
 
                     <div>
-                        <Button className='w-[600px] font-bold
+                        <Button
+                        disabled={progress === 100 ? false : true}
+                        className='w-[600px] font-bold
                         text-pastel-green-800 bg-mercury-white-50
                         tabletS:w-[400px] mobileL:w-[280px]
                          '>

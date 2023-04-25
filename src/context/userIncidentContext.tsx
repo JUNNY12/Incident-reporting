@@ -3,9 +3,8 @@ import { getUserIncidents } from '../services';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase/firebase';
 
-// Incident Type
 export type IncidentType = {
-  id?: number | string;
+  id?:string;
   type?: string;
   description?: string;
   date?: string;
@@ -16,14 +15,19 @@ export type IncidentType = {
   [key: string]: any;
 }
 
-// Initial State
-export const initialIncidentState: IncidentType[] = []
+export const initialIncidentState: IncidentType[] = [];
 
-//type for context
-export type UseIncidentsContextType = { incidents: IncidentType[], loading: boolean }
+export type UseIncidentsContextType = {
+  incidents: IncidentType[],
+  loading: boolean,
+  setIncidents: React.Dispatch<React.SetStateAction<IncidentType[]>>,
+};
 
-//initial context state
-export const initialContextState: UseIncidentsContextType = { incidents: [], loading: false }
+export const initialContextState: UseIncidentsContextType = {
+  incidents: initialIncidentState,
+  loading: true,
+  setIncidents: () => {},
+};
 
 export type childrenType = {
   children?: React.ReactElement | React.ReactElement[]
@@ -36,11 +40,9 @@ export const IncidentsProvider = ({ children }: childrenType): React.ReactElemen
   const [incidents, setIncidents] = useState<IncidentType[]>(initialIncidentState)
   const [loading, setLoading] = useState<boolean>(true)
 
-
-
   useEffect(() => {
     const fetchIncidents = async () => {
-      if (!user) return; // Exit if user is not defined
+      if (!user) return;
 
       setLoading(true)
       const fetchedIncidents = await getUserIncidents(user.uid);
@@ -49,21 +51,15 @@ export const IncidentsProvider = ({ children }: childrenType): React.ReactElemen
 
       setIncidents(fetchedIncidents);
       setLoading(false)
-
-      // console.log(fetchedIncidents);
     };
 
     fetchIncidents();
   }, [user]);
 
-
-  // console.log(incidents)
-
   return (
-    <IncidentsContext.Provider value={{ incidents, loading }}>
+    <IncidentsContext.Provider value={{ incidents, loading, setIncidents }}>
       {children}
     </IncidentsContext.Provider>
-
   )
 }
 

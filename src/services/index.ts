@@ -3,7 +3,9 @@ export {
     postIncident,
     getAllIncidents,
     updateUserNotificationToken,
-    getTokens, sendNotification,
-    getUserToken
+    getTokens, 
+    sendNotification,
+    getUserToken,
+    deleteIncident,
 }
     from './api'

@@ -21,6 +21,16 @@ export const getUserIncidents = async (uid: string) => {
     }
 };
 
+export const deleteIncident = async (uid: string| undefined, id: string| undefined) => {
+    try{
+        const response = await axiosInstance.delete(`users/${uid}/incidents/${id}.json?auth=${auth}`);
+        return response;
+    }
+    catch(error: any){
+        console.log(error);
+    }
+}
+
 export const getAllIncidents = async () => {
 
     try {

@@ -46,7 +46,7 @@ export const AllIncidentsProvider = ({ children }: childrenType): React.ReactEle
 
 
   return (
-    <AllIncidentsContext.Provider value={{ incidents, loading }}>
+    <AllIncidentsContext.Provider value={{ incidents, loading, setIncidents }}>
       {children}
     </AllIncidentsContext.Provider>
 

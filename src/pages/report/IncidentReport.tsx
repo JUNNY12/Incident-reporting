@@ -34,13 +34,14 @@ const IncidentReport = () => {
 
                 {
                     currentIncidents?.map((incident: IncidentType) => {
-                        const { id, type, image } = incident
+                        const { id, type, image,time } = incident
                         return (
                             <IncidentCard
                                 key={id}
                                 id={id}
                                 type={type}
                                 image={image}
+                                time={time}
                             />
                         )
                     })

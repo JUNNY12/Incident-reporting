@@ -6,7 +6,7 @@ import { CircleLoader } from 'react-spinners'
 
 
 
-const AllIncidentCard = ({ id, type, image }: IncidentType) => {
+const AllIncidentCard = ({ id, type, image,time }: IncidentType) => {
 
     const [isLoaded, setIsLoaded] = React.useState(false)
 
@@ -42,6 +42,7 @@ const AllIncidentCard = ({ id, type, image }: IncidentType) => {
                             title={type}
                         />
                     </div>
+                    <div>{time}</div>
                     <div role='button' className=' hidden group-hover:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition duration-300 ease-in-out'>
                         <Link to={`/inc/${id}`} className='bg-pastel-green-600 rounded-sm text-mercury-white-50 w-[40px] h-[10px] p-2'>
                             View

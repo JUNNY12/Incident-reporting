@@ -3,9 +3,10 @@ interface buttonProps {
     className?: string;
     onClick?: () => void;
     title?: string;
+    disabled?: boolean;
 }
 
-export const Button = ({ children, className, onClick, title }: buttonProps) => {
+export const Button = ({ children,disabled, className, onClick, title }: buttonProps) => {
     return (
         <button className={`hover:bg-pastel-green-200
          transition-all duration-300 ease-in-out
@@ -14,6 +15,7 @@ export const Button = ({ children, className, onClick, title }: buttonProps) => 
         ${className}`}
         onClick={onClick}
         title={title}
+        disabled={disabled}
         >
             {children}
         </button>

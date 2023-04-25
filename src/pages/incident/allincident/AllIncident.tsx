@@ -4,20 +4,29 @@ import AllIncidentCard from './AllIncidentCard'
 import useAllIncident from '../../../hooks/useAllIncident'
 import { PuffLoader } from 'react-spinners'
 import { SearchContext } from '../../../context/SearchContext'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import Empty from '../../report/Empty'
 import { usePagination } from '../../../hooks/usePagination'
 import ReactPaginate from 'react-paginate';
-
+import { getAllIncidents } from '../../../services'
 
 const AllIncident = () => {
 
     const { searchState } = useContext(SearchContext)
-    const { searchResults, query } = searchState
+    const { searchResults, query, } = searchState
 
-    const { incidents, loading } = useAllIncident()
+    const { incidents, loading, setIncidents } = useAllIncident()
 
     const { currentIncidents, pageCount, handlePageClick, currentPage } = usePagination({ incidents, perPage: 8 })
+
+    useEffect(() => {
+        const getNewIncidents = async () => {
+            const newIncidents: any = await getAllIncidents()
+            setIncidents(newIncidents)
+        }
+
+        getNewIncidents()
+    }, []);
 
 
     const displayedIncidents = query ? searchResults : currentIncidents
@@ -81,7 +90,7 @@ const AllIncident = () => {
 
             {loading && <div className='flex items-center justify-center'> <PuffLoader color='#116a31' size={150} /></div>}
             {
-               (incidents.length !== 0) && (
+                (incidents.length !== 0) && (
                     <ReactPaginate
                         pageCount={pageCount}
                         onPageChange={handlePageClick}
